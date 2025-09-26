@@ -1,13 +1,13 @@
-package com.example.btl_ptpmhdv_2025;
+package com.example.haui_clinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BtlPtpmhdv2025Application {
+public class HauiClinicApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BtlPtpmhdv2025Application.class, args);
+        SpringApplication.run(HauiClinicApplication.class, args);
     }
 
 }

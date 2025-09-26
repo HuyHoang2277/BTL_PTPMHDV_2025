@@ -1,10 +1,10 @@
-package com.example.btl_ptpmhdv_2025;
+package com.example.haui_clinic;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BtlPtpmhdv2025ApplicationTests {
+class HauiClinicApplicationTests {
 
     @Test
     void contextLoads() {
