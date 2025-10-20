@@ -61,6 +61,43 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    public AuthResponse registerAdmin(RegisterAdminRequest request) {
+        if (accountRepo.findByEmail(request.getEmail()).isPresent()) {
+            throw new RuntimeException("Email already exists");
+        }
+
+        AuthAccount account = new AuthAccount();
+        account.setEmail(request.getEmail());
+        account.setPasswordHash(passwordEncoder.encode(request.getPassword()));
+        account.setProvider(Provider.credentials);
+        account.setStatus(1);
+
+        AuthRole role = roleRepo.findByName(request.getRoleName())
+                .orElseThrow(() -> new RuntimeException("Role not found: " + request.getRoleName()));
+        account.setRoles(Collections.singleton(role));
+
+        AuthAccount saved = accountRepo.save(account);
+
+        String accessToken = jwtService.generateToken(saved.getEmail(), Map.of("role", request.getRoleName()));
+        String refreshToken = UUID.randomUUID().toString();
+
+        AuthRefreshToken tokenEntity = new AuthRefreshToken();
+        tokenEntity.setAccount(saved);
+        tokenEntity.setToken(refreshToken);
+        tokenEntity.setExpiryDate(Timestamp.from(Instant.now().plusSeconds(60 * 60 * 24 * 7))); // 7 ngày
+        refreshRepo.save(tokenEntity);
+
+        return AuthResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .userId(saved.getId())
+                .email(saved.getEmail())
+                .role(request.getRoleName())
+                .build();
+    }
+
+
+    @Override
     public AuthResponse login(AuthRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
