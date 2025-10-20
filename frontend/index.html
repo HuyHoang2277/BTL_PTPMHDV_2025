@@ -803,12 +803,6 @@
         font-size: 4rem;
         color: white;
       }
-      .course-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
 
       .course-content {
         padding: 1.5rem;
@@ -1747,6 +1741,64 @@
           justify-content: center;
         }
       }
+
+      /* Social Login */
+      .social-login {
+        margin-top: 1rem;
+      }
+      .social-login .divider {
+        position: relative;
+        text-align: center;
+        margin: 1rem 0 1rem;
+        color: #718096;
+        font-size: 0.9rem;
+      }
+      .social-login .divider::before,
+      .social-login .divider::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background: #e2e8f0;
+      }
+      .social-login .divider::before {
+        left: 0;
+      }
+      .social-login .divider::after {
+        right: 0;
+      }
+      .btn-social {
+        width: 100%;
+        margin-top: 0.6rem;
+        border-radius: 8px;
+        display: inline-flex;
+        gap: 0.6rem;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-google {
+        background: #fff;
+        color: #2d3748;
+        border: 2px solid #e2e8f0;
+      }
+      .btn-google:hover {
+        background: #f8fafc;
+      }
+      .btn-facebook {
+        background: #1877f2;
+        color: #fff;
+      }
+      .btn-facebook:hover {
+        filter: brightness(0.95);
+      }
+      .btn-github {
+        background: #111827;
+        color: #fff;
+      }
+      .btn-github:hover {
+        filter: brightness(1.05);
+      }
     </style>
 
     <style>
@@ -2583,6 +2635,30 @@
             Đăng nhập
           </button>
         </form>
+        <div class="social-login">
+          <div class="divider"><span>hoặc</span></div>
+          <button
+            type="button"
+            class="btn btn-social btn-google"
+            onclick="socialLogin('google')"
+          >
+            <i class="fab fa-google"></i> Đăng nhập với Google
+          </button>
+          <button
+            type="button"
+            class="btn btn-social btn-facebook"
+            onclick="socialLogin('facebook')"
+          >
+            <i class="fab fa-facebook-f"></i> Đăng nhập với Facebook
+          </button>
+          <button
+            type="button"
+            class="btn btn-social btn-github"
+            onclick="socialLogin('github')"
+          >
+            <i class="fab fa-github"></i> Đăng nhập với GitHub
+          </button>
+        </div>
       </div>
     </div>
 
@@ -2614,6 +2690,30 @@
             Đăng ký
           </button>
         </form>
+        <div class="social-login">
+          <div class="divider"><span>hoặc</span></div>
+          <button
+            type="button"
+            class="btn btn-social btn-google"
+            onclick="socialLogin('google')"
+          >
+            <i class="fab fa-google"></i> Đăng ký với Google
+          </button>
+          <button
+            type="button"
+            class="btn btn-social btn-facebook"
+            onclick="socialLogin('facebook')"
+          >
+            <i class="fab fa-facebook-f"></i> Đăng ký với Facebook
+          </button>
+          <button
+            type="button"
+            class="btn btn-social btn-github"
+            onclick="socialLogin('github')"
+          >
+            <i class="fab fa-github"></i> Đăng ký với GitHub
+          </button>
+        </div>
       </div>
     </div>
 
@@ -2705,8 +2805,6 @@
         {
           id: 1,
           title: "HTML CSS từ Zero đến Hero",
-
-          image: "2.png",
           description:
             "Học HTML CSS cơ bản cho người mới bắt đầu, xây dựng giao diện web chuyên nghiệp. Khóa học sẽ giúp bạn nắm vững kiến thức nền tảng quan trọng nhất trong lập trình web.",
           category: "frontend",
@@ -2817,8 +2915,6 @@
         {
           id: 2,
           title: "JavaScript Cơ Bản",
-
-          image: "1.png",
           description:
             "Nắm vững JavaScript từ cơ bản đến nâng cao, lập trình web động. Học cách xử lý sự kiện, DOM manipulation và các khái niệm lập trình hướng đối tượng.",
           category: "frontend",
@@ -2925,8 +3021,6 @@
         {
           id: 3,
           title: "React JS - Thực Chiến",
-
-          image: "13.png",
           description:
             "Xây dựng ứng dụng web hiện đại với React, Redux và React Hooks. Học cách tạo components, quản lý state, routing và tích hợp API.",
           category: "frontend",
@@ -3003,8 +3097,6 @@
         {
           id: 4,
           title: "Node.js & Express",
-
-          image: "01J5CG8QJYWM82K1JE6SESQAEB.png",
           description:
             "Lập trình Backend với Node.js, xây dựng RESTful API chuyên nghiệp. Học cách xử lý database, authentication và deploy ứng dụng.",
           category: "backend",
@@ -3085,8 +3177,6 @@
         {
           id: 5,
           title: "MongoDB Database",
-
-          image: "286c9a3f-6a38-4113-addd-7b6e43b537bf.webp",
           description:
             "Học database NoSQL MongoDB từ cơ bản đến nâng cao. Nắm vững cách thiết kế schema, query optimization và aggregation.",
           category: "database",
@@ -3158,8 +3248,6 @@
         {
           id: 6,
           title: "React Native Mobile App",
-
-          image: "react-native.png",
           description:
             "Xây dựng ứng dụng di động đa nền tảng với React Native. Học cách tạo UI, navigation, và tích hợp với native modules.",
           category: "mobile",
@@ -3256,15 +3344,9 @@
           courseCard.onclick = () => viewCourse(course.id);
 
           courseCard.innerHTML = `
-                    
                     <div class="course-image">
-                        ${
-                          course.image
-                            ? `<img src="${course.image}" alt="${course.title}" loading="lazy">`
-                            : `<i class="fab ${course.icon}"></i>`
-                        }
+                        <i class="fab ${course.icon}"></i>
                     </div>
-
                     <div class="course-content">
                         <h3 class="course-title">${course.title}</h3>
                         <p class="course-description">${course.description.substring(
@@ -3951,6 +4033,36 @@
           });
         });
       })();
+
+      function socialLogin(provider) {
+        // Mô phỏng đăng nhập qua mạng xã hội
+        const pretty = {
+          google: { name: "Người dùng Google", email: "user@gmail.com" },
+          facebook: { name: "Người dùng Facebook", email: "user@facebook.com" },
+          github: { name: "Người dùng GitHub", email: "user@github.com" },
+        };
+        const info = pretty[provider] || {
+          name: "User",
+          email: "user@example.com",
+        };
+        currentUser = {
+          name: info.name,
+          email: info.email,
+          phone: "",
+          birthday: "",
+          bio: "",
+        };
+        // đóng modal nếu mở
+        closeModal("login");
+        closeModal("register");
+        updateUserInterface();
+        alert(
+          "Đăng nhập bằng " +
+            provider.charAt(0).toUpperCase() +
+            provider.slice(1) +
+            " thành công (mô phỏng)!"
+        );
+      }
     </script>
   </body>
 </html>
