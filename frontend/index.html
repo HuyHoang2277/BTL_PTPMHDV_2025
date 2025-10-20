@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CỐT ĐƠ - Học Lập Trình Online</title>
+    <title>CodeLearn - Học Lập Trình Online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -479,8 +479,177 @@
             margin-top: 80px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 4rem 2rem;
+            padding: 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Banner Slider */
+        .banner-slider {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .banner-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .banner-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .banner-slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .banner-slide-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .banner-slide-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .banner-slide-4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 10;
+            animation: fadeInUp 1s;
+        }
+
+        .banner-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .banner-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .banner-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cta-primary {
+            background: white;
+            color: #667eea;
+            border: none;
+        }
+
+        .btn-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-cta-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Banner Navigation */
+        .banner-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 20;
+        }
+
+        .banner-nav-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.3);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .banner-nav-btn:hover {
+            background: rgba(255,255,255,0.5);
+            transform: scale(1.1);
+        }
+
+        /* Banner Dots */
+        .banner-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.8rem;
+            z-index: 20;
+        }
+
+        .banner-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .banner-dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Search section after banner */
+        .search-section {
+            background: white;
+            padding: 3rem 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .search-section .search-bar {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .hero h1 {
@@ -532,7 +701,8 @@
             display: flex;
             justify-content: center;
             gap: 4rem;
-            margin-top: 3rem;
+            padding: 3rem 2rem;
+            background: #f7fafc;
         }
 
         .stat-item {
@@ -1487,6 +1657,18 @@
             .rating-overview {
                 margin: 0 auto;
             }
+            
+            .banner-slider {
+                height: 450px;
+            }
+            
+            .banner-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .banner-content p {
+                font-size: 1.1rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1514,6 +1696,47 @@
             .tab {
                 font-size: 0.9rem;
             }
+            
+            .banner-slider {
+                height: 400px;
+            }
+            
+            .banner-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .banner-content p {
+                font-size: 1rem;
+            }
+            
+            .banner-cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn-cta {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .banner-nav {
+                padding: 0 1rem;
+            }
+            
+            .banner-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .profile-header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-stats {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -1523,7 +1746,7 @@
         <nav>
             <div class="logo" onclick="showHomePage()">
                 <i class="fas fa-graduation-cap"></i>
-                <span>CỐT ĐƠ</span>
+                <span>CodeLearn</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#courses" onclick="showHomePage()">Khóa học</a></li>
@@ -1582,29 +1805,111 @@
 
     <!-- Home Page -->
     <div id="homePage">
-        <!-- Hero Section -->
+        <!-- Hero Section with Banner Slider -->
         <section class="hero">
-            <h1>Học Lập Trình Thực Chiến</h1>
-            <p>Trở thành lập trình viên chuyên nghiệp với các khóa học từ cơ bản đến nâng cao</p>
-            
+            <div class="banner-slider">
+                <div class="banner-slides" id="bannerSlides">
+                    <!-- Slide 1 -->
+                    <div class="banner-slide banner-slide-1">
+                        <div class="banner-content">
+                            <h1>Học Lập Trình Thực Chiến</h1>
+                            <p>Trở thành lập trình viên chuyên nghiệp với các khóa học từ cơ bản đến nâng cao</p>
+                            <div class="banner-cta">
+                                <button class="btn-cta btn-cta-primary" onclick="document.getElementById('courses').scrollIntoView({ behavior: 'smooth' })">
+                                    <i class="fas fa-rocket"></i> Khám phá ngay
+                                </button>
+                                <button class="btn-cta btn-cta-secondary" onclick="openModal('register')">
+                                    <i class="fas fa-user-plus"></i> Đăng ký miễn phí
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="banner-slide banner-slide-2">
+                        <div class="banner-content">
+                            <h1>Học Frontend Từ Zero</h1>
+                            <p>HTML, CSS, JavaScript, React - Xây dựng giao diện web chuyên nghiệp</p>
+                            <div class="banner-cta">
+                                <button class="btn-cta btn-cta-primary" onclick="filterCourses('frontend')">
+                                    <i class="fas fa-code"></i> Xem khóa học
+                                </button>
+                                <button class="btn-cta btn-cta-secondary" onclick="openModal('login')">
+                                    <i class="fas fa-play-circle"></i> Học thử miễn phí
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="banner-slide banner-slide-3">
+                        <div class="banner-content">
+                            <h1>Backend & Database</h1>
+                            <p>Node.js, Python, MongoDB - Làm chủ công nghệ Backend hiện đại</p>
+                            <div class="banner-cta">
+                                <button class="btn-cta btn-cta-primary" onclick="filterCourses('backend')">
+                                    <i class="fas fa-server"></i> Khám phá Backend
+                                </button>
+                                <button class="btn-cta btn-cta-secondary" onclick="filterCourses('database')">
+                                    <i class="fas fa-database"></i> Học Database
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="banner-slide banner-slide-4">
+                        <div class="banner-content">
+                            <h1>Lập Trình Mobile App</h1>
+                            <p>React Native, Flutter - Tạo ứng dụng di động đa nền tảng</p>
+                            <div class="banner-cta">
+                                <button class="btn-cta btn-cta-primary" onclick="filterCourses('mobile')">
+                                    <i class="fas fa-mobile-alt"></i> Học Mobile
+                                </button>
+                                <button class="btn-cta btn-cta-secondary" onclick="viewCourse(6)">
+                                    <i class="fas fa-star"></i> Khóa học HOT
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="banner-nav">
+                    <button class="banner-nav-btn" onclick="previousSlide()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="banner-nav-btn" onclick="nextSlide()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Dots -->
+                <div class="banner-dots" id="bannerDots"></div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Tìm kiếm khóa học...">
                 <button onclick="searchCourses()"><i class="fas fa-search"></i> Tìm kiếm</button>
             </div>
+        </section>
 
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-number">50,000+</div>
-                    <div class="stat-label">Học viên</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">200+</div>
-                    <div class="stat-label">Khóa học</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100+</div>
-                    <div class="stat-label">Giảng viên</div>
-                </div>
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="stat-item">
+                <div class="stat-number">50,000+</div>
+                <div class="stat-label">Học viên</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Khóa học</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Giảng viên</div>
             </div>
         </section>
 
@@ -2110,6 +2415,84 @@
         // User data stored in memory
         let currentUser = null;
         let enrolledCourses = [];
+        
+        // Banner slider
+        let currentSlide = 0;
+        let slideInterval;
+        const totalSlides = 4;
+
+        // Initialize banner slider
+        function initBannerSlider() {
+            // Create dots
+            const dotsContainer = document.getElementById('bannerDots');
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'banner-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+            
+            // Start auto slide
+            startAutoSlide();
+        }
+
+        // Go to specific slide
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Next slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+            resetAutoSlide();
+        }
+
+        // Previous slide
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+            resetAutoSlide();
+        }
+
+        // Update slider position
+        function updateSlider() {
+            const slides = document.getElementById('bannerSlides');
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            const dots = document.querySelectorAll('.banner-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Start auto slide
+        function startAutoSlide() {
+            slideInterval = setInterval(() => {
+                nextSlide();
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        // Reset auto slide
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        // Stop auto slide when user hovers over banner
+        document.addEventListener('DOMContentLoaded', () => {
+            const banner = document.querySelector('.banner-slider');
+            if (banner) {
+                banner.addEventListener('mouseenter', () => {
+                    clearInterval(slideInterval);
+                });
+                banner.addEventListener('mouseleave', () => {
+                    startAutoSlide();
+                });
+            }
+        });
 
         // Courses data with full curriculum
         const coursesData = [
@@ -2943,6 +3326,9 @@
 
         // Initialize courses on page load
         renderCourses(coursesData);
+        
+        // Initialize banner slider
+        initBannerSlider();
     </script>
 </body>
 </html>
