@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -32,7 +33,7 @@ public class AuthAccount {
     @Column(name = "provider_id")
     private String providerId;
 
-    private Timestamp createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     private Integer status;
 
