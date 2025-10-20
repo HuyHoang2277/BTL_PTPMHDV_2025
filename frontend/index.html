@@ -803,6 +803,12 @@
         font-size: 4rem;
         color: white;
       }
+      .course-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
       .course-content {
         padding: 1.5rem;
@@ -2805,6 +2811,8 @@
         {
           id: 1,
           title: "HTML CSS từ Zero đến Hero",
+
+          image: "2.png",
           description:
             "Học HTML CSS cơ bản cho người mới bắt đầu, xây dựng giao diện web chuyên nghiệp. Khóa học sẽ giúp bạn nắm vững kiến thức nền tảng quan trọng nhất trong lập trình web.",
           category: "frontend",
@@ -2915,6 +2923,8 @@
         {
           id: 2,
           title: "JavaScript Cơ Bản",
+
+          image: "1.png",
           description:
             "Nắm vững JavaScript từ cơ bản đến nâng cao, lập trình web động. Học cách xử lý sự kiện, DOM manipulation và các khái niệm lập trình hướng đối tượng.",
           category: "frontend",
@@ -3021,6 +3031,8 @@
         {
           id: 3,
           title: "React JS - Thực Chiến",
+
+          image: "13.png",
           description:
             "Xây dựng ứng dụng web hiện đại với React, Redux và React Hooks. Học cách tạo components, quản lý state, routing và tích hợp API.",
           category: "frontend",
@@ -3097,6 +3109,8 @@
         {
           id: 4,
           title: "Node.js & Express",
+
+          image: "01J5CG8QJYWM82K1JE6SESQAEB.png",
           description:
             "Lập trình Backend với Node.js, xây dựng RESTful API chuyên nghiệp. Học cách xử lý database, authentication và deploy ứng dụng.",
           category: "backend",
@@ -3177,6 +3191,8 @@
         {
           id: 5,
           title: "MongoDB Database",
+
+          image: "286c9a3f-6a38-4113-addd-7b6e43b537bf.webp",
           description:
             "Học database NoSQL MongoDB từ cơ bản đến nâng cao. Nắm vững cách thiết kế schema, query optimization và aggregation.",
           category: "database",
@@ -3248,6 +3264,8 @@
         {
           id: 6,
           title: "React Native Mobile App",
+
+          image: "react-native.png",
           description:
             "Xây dựng ứng dụng di động đa nền tảng với React Native. Học cách tạo UI, navigation, và tích hợp với native modules.",
           category: "mobile",
@@ -3344,9 +3362,15 @@
           courseCard.onclick = () => viewCourse(course.id);
 
           courseCard.innerHTML = `
-                    <div class="course-image">
-                        <i class="fab ${course.icon}"></i>
-                    </div>
+                    <div class="course-image">${
+                      course.image
+                        ? '<img src="' +
+                          course.image +
+                          '" alt="' +
+                          course.title +
+                          '" loading="lazy">'
+                        : '<i class="fab ' + course.icon + '"></i>'
+                    }</div>
                     <div class="course-content">
                         <h3 class="course-title">${course.title}</h3>
                         <p class="course-description">${course.description.substring(
